@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -27,9 +26,6 @@
          <font>
             <Font name="Corbel Bold" size="18.0" />
          </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
       </JFXButton>
       <Text layoutX="465.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name :">
          <font>
