@@ -1,5 +1,6 @@
 package lk.ijse.Live_Chat_Application.controller;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ public class LoginController {
     public TextField txtUserName;
     public static String clientName;
     public AnchorPane loginPane;
+    public JFXButton btnSend;
 
     public void loadClientPageOnAction(ActionEvent actionEvent) throws IOException {
         clientName = txtUserName.getText();

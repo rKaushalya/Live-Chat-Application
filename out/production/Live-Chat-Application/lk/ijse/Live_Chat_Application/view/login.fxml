@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -22,10 +23,13 @@
          </image>
       </ImageView>
       <TextField fx:id="txtUserName" layoutX="465.0" layoutY="247.0" prefHeight="41.0" prefWidth="245.0" promptText="Username" style="-fx-background-radius: 5;" />
-      <JFXButton layoutX="536.0" layoutY="337.0" onAction="#loadClientPageOnAction" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: #74b9ff; -fx-background-radius: 5;" text="Login">
+      <JFXButton fx:id="btnSend" layoutX="536.0" layoutY="337.0" onAction="#loadClientPageOnAction" prefHeight="41.0" prefWidth="103.0" style="-fx-background-color: #74b9ff; -fx-background-radius: 5;" text="Login">
          <font>
             <Font name="Corbel Bold" size="18.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </JFXButton>
       <Text layoutX="465.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name :">
          <font>

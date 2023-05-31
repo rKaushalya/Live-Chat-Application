@@ -10,6 +10,11 @@ public class ClientController {
     public ScrollPane txtArea;
     public Label txtClientName;
 
+    public void initialize(){
+        this.txtClientName.setText(LoginController.clientName);
+    }
+
     public void sendOnAction(ActionEvent actionEvent) {
+
     }
 }
