@@ -1,5 +1,6 @@
 package lk.ijse.Live_Chat_Application.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,6 +46,52 @@ public class ClientController extends Thread{
         }
     }
 
+    public void run(){
+        try {
+            while (true) {
+                String msg = bufferedReader.readLine();
+                System.out.println("Message : "+msg);
+                String[] array = msg.split(" ");
+                String name = array[0];
+                System.out.println("Client name : "+name);
+                StringBuilder message = new StringBuilder();
+                for (int i = 1; i < array.length ; i++) {
+                    message.append(array[i]);
+                }
+                System.out.println("Message : "+message);
+                System.out.println();
+                if (name.equalsIgnoreCase(LoginController.clientName + ":")){
+                    continue;
+                }else if (message.toString().equalsIgnoreCase("bye")){
+                    break;
+                }
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        HBox hBox = new HBox();
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        hBox.setPadding(new Insets(5,10,5,5));
+                        Text text = new Text(msg);
+                        text.setStyle("-fx-font-size: 15px");
+                        TextFlow textFlow = new TextFlow(text);
+                        textFlow.setStyle("-fx-color:rgb(239,242,255);"
+                                + "-fx-background-color: rgb(62,155,224);" +
+                                "-fx-background-radius: 20px");
+                        textFlow.setPadding(new Insets(5,0,5,5));
+                        text.setFill(Color.color(0,0,0));
+                        hBox.getChildren().add(textFlow);
+                        messageArea.getChildren().add(hBox);
+                    }
+                });
+            }
+            bufferedReader.close();
+            printWriter.close();
+            socket.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void sendOnAction(ActionEvent actionEvent) {
         send();
     }
@@ -61,7 +107,7 @@ public class ClientController extends Thread{
 
         TextFlow textFlow = new TextFlow(text);
         textFlow.setStyle("-fx-color:rgb(239,242,255);"
-                + "-fx-background-color: rgb(18,84,160);" +
+                + "-fx-background-color: rgb(62,155,224);" +
                 "-fx-background-radius: 20px");
         textFlow.setPadding(new Insets(5,10,5,10));
         text.setFill(Color.color(0,0,0));
