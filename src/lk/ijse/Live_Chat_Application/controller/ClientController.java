@@ -4,19 +4,25 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
+import java.io.*;
+import java.net.MalformedURLException;
 import java.net.Socket;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class ClientController extends Thread{
@@ -25,9 +31,11 @@ public class ClientController extends Thread{
     public Label txtClientName;
     public VBox messageArea;
 
-    Socket socket;
-    PrintWriter printWriter;
-    BufferedReader bufferedReader;
+    private Socket socket;
+    private PrintWriter printWriter;
+    private BufferedReader bufferedReader;
+    private FileChooser fileChooser;
+    private URL url;
 
     public void initialize(){
         this.txtClientName.setText(LoginController.clientName);
@@ -118,5 +126,30 @@ public class ClientController extends Thread{
         if (msg.equalsIgnoreCase("bye")){
         System.exit(0);
         }
+    }
+
+    public void openFileChooser(MouseEvent mouseEvent) throws MalformedURLException {
+        Stage stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose a Image");
+        File file = fileChooser.showOpenDialog(stage);
+        if (file != null){
+            printWriter.println(LoginController.clientName + " : " + file.toURI().toURL());
+            System.out.println("File Selected....");
+            url = file.toURI().toURL();
+            System.out.println(url);
+            ImageView imageView = new ImageView();
+            Image image = new Image(String.valueOf(url));
+            imageView.setImage(image);
+            imageView.setFitHeight(100);
+            imageView.setFitWidth(100);
+            HBox hBox = new HBox(imageView);
+            hBox.setAlignment(Pos.CENTER_RIGHT);
+            hBox.setPadding(new Insets(5,10,5,5));
+            messageArea.getChildren().add(hBox);
+        }
+    }
+
+    public void imojiOnAction(MouseEvent mouseEvent) {
     }
 }

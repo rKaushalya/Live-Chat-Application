@@ -30,7 +30,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="43.0" layoutY="428.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="43.0" layoutY="428.0" onMouseClicked="#imojiOnAction" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../assest/emoji-love.png" />
                </image>
@@ -56,6 +56,14 @@
                <image>
                   <Image url="@../assest/icon.png" />
                </image>
+            </ImageView>
+            <ImageView fitHeight="28.0" fitWidth="37.0" layoutX="514.0" layoutY="428.0" onMouseClicked="#openFileChooser" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assest/3342176.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </AnchorPane>
