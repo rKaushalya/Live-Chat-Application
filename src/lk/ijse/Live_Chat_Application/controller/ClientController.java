@@ -51,16 +51,16 @@ public class ClientController extends Thread{
             while (true) {
                 String msg = bufferedReader.readLine();
                 System.out.println("Message : "+msg);
-                String[] array = msg.split(" ");
+                String[] array = msg.split(" :");
                 String name = array[0];
                 System.out.println("Client name : "+name);
                 StringBuilder message = new StringBuilder();
                 for (int i = 1; i < array.length ; i++) {
                     message.append(array[i]);
                 }
-                System.out.println("Message : "+message);
+                System.out.println("New Msg : "+message);
                 System.out.println();
-                if (name.equalsIgnoreCase(LoginController.clientName + ":")){
+                if (name.equalsIgnoreCase(LoginController.clientName)){
                     continue;
                 }else if (message.toString().equalsIgnoreCase("bye")){
                     break;
@@ -77,7 +77,7 @@ public class ClientController extends Thread{
                         textFlow.setStyle("-fx-color:rgb(239,242,255);"
                                 + "-fx-background-color: rgb(62,155,224);" +
                                 "-fx-background-radius: 20px");
-                        textFlow.setPadding(new Insets(5,0,5,5));
+                        textFlow.setPadding(new Insets(5,10,5,10));
                         text.setFill(Color.color(0,0,0));
                         hBox.getChildren().add(textFlow);
                         messageArea.getChildren().add(hBox);
@@ -98,7 +98,7 @@ public class ClientController extends Thread{
 
     private void send(){
         String msg = txtMessage.getText();
-        printWriter.println(txtClientName.getText() + " : " + msg);
+        printWriter.println(LoginController.clientName + " : " + msg);
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER_RIGHT);
         hBox.setPadding(new Insets(5,5,5,10));

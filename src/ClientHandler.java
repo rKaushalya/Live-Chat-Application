@@ -28,8 +28,8 @@ public class ClientHandler extends Thread{
                     break;
                 }
                 for (ClientHandler cl : clients) {
-                    cl.printWriter.println(cl);
-                    System.out.println(cl);
+                    cl.printWriter.println(msg);
+                    System.out.println(msg);
                 }
             }
         }catch (Exception e){
