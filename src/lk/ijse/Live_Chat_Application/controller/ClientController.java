@@ -66,7 +66,7 @@ public class ClientController extends Thread{
                 for (int i = 1; i < array.length ; i++) {
                     message.append(array[i]);
                 }
-                System.out.println("New Msg : "+message);
+                System.out.println("New Msg :"+message);
                 System.out.println();
                 if (name.equalsIgnoreCase(LoginController.clientName)){
                     continue;
@@ -77,18 +77,39 @@ public class ClientController extends Thread{
                     @Override
                     public void run() {
                         HBox hBox = new HBox();
-                        hBox.setAlignment(Pos.CENTER_LEFT);
-                        hBox.setPadding(new Insets(5,10,5,5));
-                        Text text = new Text(msg);
-                        text.setStyle("-fx-font-size: 15px");
-                        TextFlow textFlow = new TextFlow(text);
-                        textFlow.setStyle("-fx-color:rgb(239,242,255);"
-                                + "-fx-background-color: rgb(62,155,224);" +
-                                "-fx-background-radius: 20px");
-                        textFlow.setPadding(new Insets(5,10,5,10));
-                        text.setFill(Color.color(0,0,0));
-                        hBox.getChildren().add(textFlow);
-                        messageArea.getChildren().add(hBox);
+                        if (message.toString().endsWith(".png") || message.toString().endsWith(".jpg") ||
+                                message.toString().endsWith(".jpeg") || message.toString().endsWith(".gif")){
+                            System.out.println(message);
+                            hBox.setAlignment(Pos.CENTER_LEFT);
+                            hBox.setPadding(new Insets(5,10,5,5));
+                            Text text = new Text(name + " : ");
+                            text.setStyle("-fx-font-size: 15px");
+                            ImageView imageView = new ImageView();
+                            Image image = new Image(String.valueOf(message));
+                            imageView.setImage(image);
+                            imageView.setFitWidth(100);
+                            imageView.setFitHeight(100);
+                            TextFlow textFlow = new TextFlow(text,imageView);
+                            textFlow.setStyle("-fx-color:rgb(239,242,255);"
+                                    + "-fx-background-color: rgb(182,182,182);" +
+                                    "-fx-background-radius: 10px");
+                            textFlow.setPadding(new Insets(5,5,5,5));
+                            hBox.getChildren().add(textFlow);
+                            messageArea.getChildren().add(hBox);
+                        }else {
+                            hBox.setAlignment(Pos.CENTER_LEFT);
+                            hBox.setPadding(new Insets(5,10,5,5));
+                            Text text = new Text(msg);
+                            text.setStyle("-fx-font-size: 15px");
+                            TextFlow textFlow = new TextFlow(text);
+                            textFlow.setStyle("-fx-color:rgb(239,242,255);"
+                                    + "-fx-background-color: rgb(62,155,224);" +
+                                    "-fx-background-radius: 20px");
+                            textFlow.setPadding(new Insets(5,10,5,10));
+                            text.setFill(Color.color(0,0,0));
+                            hBox.getChildren().add(textFlow);
+                            messageArea.getChildren().add(hBox);
+                        }
                     }
                 });
             }
@@ -134,7 +155,7 @@ public class ClientController extends Thread{
         fileChooser.setTitle("Choose a Image");
         File file = fileChooser.showOpenDialog(stage);
         if (file != null){
-            printWriter.println(LoginController.clientName + " : " + file.toURI().toURL());
+            printWriter.println(LoginController.clientName + " :" + file.toURI().toURL());
             System.out.println("File Selected....");
             url = file.toURI().toURL();
             System.out.println(url);
