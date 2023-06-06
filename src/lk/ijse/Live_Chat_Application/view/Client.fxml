@@ -21,7 +21,7 @@
       </Label>
       <AnchorPane layoutX="55.0" layoutY="87.0" prefHeight="478.0" prefWidth="691.0" style="-fx-background-color: white;">
          <children>
-            <TextField fx:id="txtMessage" layoutX="90.0" layoutY="424.0" prefHeight="35.0" prefWidth="459.0" />
+            <TextField fx:id="txtMessage" layoutX="90.0" layoutY="424.0" prefHeight="35.0" prefWidth="459.0" promptText="Type Message" />
             <JFXButton layoutX="566.0" layoutY="424.0" onAction="#sendOnAction" prefHeight="35.0" prefWidth="89.0" style="-fx-background-color: #74b9ff; -fx-background-radius: 5;" text="Send">
                <font>
                   <Font name="Corbel Bold" size="14.0" />
@@ -65,6 +65,60 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
+            <AnchorPane fx:id="imojiPane" layoutX="-29.0" layoutY="299.0" prefHeight="122.0" prefWidth="331.0">
+               <children>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="70.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/heart.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="70.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/kiss1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="123.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/love.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="122.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/mask.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="174.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/angree.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="226.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/care.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="276.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/haha.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="172.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/pain.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="226.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/wow1.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="35.0" fitWidth="44.0" layoutX="276.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assest/wow.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>

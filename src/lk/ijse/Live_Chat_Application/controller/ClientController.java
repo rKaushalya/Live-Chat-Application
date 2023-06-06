@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -30,6 +31,7 @@ public class ClientController extends Thread{
     public ScrollPane txtArea;
     public Label txtClientName;
     public VBox messageArea;
+    public AnchorPane imojiPane;
 
     private Socket socket;
     private PrintWriter printWriter;
@@ -40,6 +42,7 @@ public class ClientController extends Thread{
     public void initialize(){
         this.txtClientName.setText(LoginController.clientName);
         connectSocket();
+        imojiPane.setVisible(false);
     }
 
     private void connectSocket(){
@@ -172,5 +175,6 @@ public class ClientController extends Thread{
     }
 
     public void imojiOnAction(MouseEvent mouseEvent) {
+        imojiPane.setVisible(!imojiPane.isVisible());
     }
 }
