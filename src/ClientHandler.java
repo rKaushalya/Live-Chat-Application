@@ -24,12 +24,11 @@ public class ClientHandler extends Thread{
             String msg;
 
             while ((msg =bufferedReader.readLine()) != null){
-                if (msg.equalsIgnoreCase("Exit")){
+                if (msg.equalsIgnoreCase("exit")){
                     break;
                 }
                 for (ClientHandler cl : clients) {
                     cl.printWriter.println(msg);
-                    System.out.println(msg);
                 }
             }
         }catch (Exception e){
